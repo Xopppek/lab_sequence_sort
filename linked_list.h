@@ -17,7 +17,7 @@ public:
         lastElement = nullptr;
         size_ = 0;
     }
-    LinkedList(const T* copyingArray, const int copyingArraySize){
+    LinkedList(const T* copyingArray, const int& copyingArraySize){
         firstElement = new Element;
         size_ = copyingArraySize;
         Element* currentElement = firstElement;
@@ -63,7 +63,7 @@ public:
     T GetLast() const{
         return lastElement->value_;
     }
-    T Get(const int index){
+    T Get(const int& index) const{
         if (index == size_ - 1)
             return GetLast();
         Element* currentElement = firstElement;
@@ -74,13 +74,13 @@ public:
     int GetLength() const{
         return size_;
     }
-    LinkedList<T>* GetSubList(const int startIndex, const int endIndex){
+    LinkedList<T>* GetSubList(const int& startIndex, const int& endIndex){
         //обработать случаи выхода за границы
-        LinkedList<T>* SubList = new LinkedList<T>;
-        SubList->size_ = endIndex - startIndex + 1;
-        SubList->firstElement = new Element;
-        SubList->firstElement->value_ = Get(startIndex);
-        Element* prevElement = SubList->firstElement;
+        LinkedList<T>* subList = new LinkedList<T>;
+        subList->size_ = endIndex - startIndex + 1;
+        subList->firstElement = new Element;
+        subList->firstElement->value_ = Get(startIndex);
+        Element* prevElement = subList->firstElement;
         for (int i = startIndex + 1; i <= endIndex; i++){
             Element* newElement = new Element;
             newElement->value_ = Get(i);
@@ -88,10 +88,10 @@ public:
             prevElement = newElement;
         }
         prevElement->next = nullptr;
-        SubList->lastElement = prevElement;
-        return SubList;
+        subList->lastElement = prevElement;
+        return subList;
     }
-    void Append(const T value){
+    void Append(const T& value){
         size_++;
         Element* newElement = new Element;
         newElement->value_ = value;
@@ -104,7 +104,7 @@ public:
         lastElement = newElement;
         lastElement->next = nullptr;
     }
-    void Prepend(const T value){
+    void Prepend(const T& value){
         size_++;
         Element* newElement = new Element;
         newElement->value_ = value;
@@ -116,7 +116,7 @@ public:
         newElement->next = firstElement;
         firstElement = newElement;
     }
-    void Set(const int index, const T value){
+    void Set(const int& index, const T& value){
         //обработать OutOfRange
         if(index == size_ - 1){
             lastElement->value_ = value;
@@ -128,7 +128,7 @@ public:
         }
         currentElement->value_ = value;
     }
-    void InsertAt(const T value, const int index){
+    void InsertAt(const T& value, const int& index){
         if (index == 0){
             Prepend(value);
             return;
@@ -143,7 +143,7 @@ public:
         for (int i = 0; i < index - 1; i++){
             currentElement = currentElement->next;
         }
-        newElement->next = currentElement->next->next;
+        newElement->next = currentElement->next;
         currentElement->next = newElement;
         size_++;
     }
@@ -159,7 +159,7 @@ public:
         return (currentElement->value_);
     }*/
 
-    T& GetElementPointer (const int index){
+    T& GetElementPointer (const int& index){
         //обработать OutOfRange
         if (index == size_ - 1)
             return (lastElement->value_);

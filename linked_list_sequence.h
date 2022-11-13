@@ -11,13 +11,13 @@ public:
     LinkedListSequence(){
         list_ = new LinkedList<T>;
     }
-    LinkedListSequence(const int size){
+    LinkedListSequence(const int& size){
         list_ = new LinkedList<T>(size);
     }
     LinkedListSequence(const LinkedListSequence<T>& copyingList){
         list_ = new LinkedList<T>(copyingList);
     }
-    LinkedListSequence(const T* copyingArray, const int copyingArraySize){
+    LinkedListSequence(const T* copyingArray, const int& copyingArraySize){
         list_ = new LinkedList<T>(copyingArray, copyingArraySize);
     }
     ~LinkedListSequence(){
@@ -26,7 +26,7 @@ public:
     int GetLength() const{
         return list_->GetLength();
     }
-    T Get (int index) const{
+    T Get (const int& index) const{
         return list_->Get(index);
     }
     T GetFirst() const{
@@ -37,26 +37,26 @@ public:
         //обработать случай пустого массива
         return list_->Get(list_->GetLength());
     }
-    LinkedListSequence<T>* GetSubSequence(const int startIndex, const int endIndex){
-        LinkedListSequence<T>* SubList = new LinkedListSequence<T>;
+    LinkedListSequence<T>* GetSubSequence(const int& startIndex, const int& endIndex){
+        LinkedListSequence<T>* subList = new LinkedListSequence<T>;
         //SubList(list_->GetSubList(startIndex, endIndex));
-        SubList->list_ = list_->GetSubList(startIndex, endIndex);
-        return SubList;
+        subList->list_ = list_->GetSubList(startIndex, endIndex);
+        return subList;
     }
-    void Append(const T value){
+    void Append(const T& value){
         list_->Append(value);
     }
-    void Prepend(const T value){
+    void Prepend(const T& value){
         list_->Prepend(value);
     }
-    void Set(const int index, const T value){
+    void Set(const int& index, const T& value){
         list_->Set(index, value);
     }
-    void InsertAt(const T value, const int index){
+    void InsertAt(const T& value, const int& index){
         list_->InsertAt(value, index);
     }
 
-    T& operator[] (const int index){
+    T& operator[] (const int& index){
         return list_->GetElementPointer(index);
     }
 };

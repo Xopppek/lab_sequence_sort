@@ -13,7 +13,7 @@ public:
         size_ = 0;
         memorySize_ = 0;
     }
-    DynamicArray(const int size){
+    DynamicArray(const int& size){
         //обработать случай ввода отрицательного size
         size_ = size;
         memorySize_ = size_;
@@ -26,7 +26,7 @@ public:
         for (int i = 0; i < size_; i++)
             elements_[i] = copyingArray.elements_[i];
     }
-    DynamicArray(const T* copyingArray, const int copyingArraySize){
+    DynamicArray(const T* copyingArray, const int& copyingArraySize){
         //обработать случай отрицательного size
         size_ = copyingArraySize;
         memorySize_ = size_;
@@ -41,19 +41,37 @@ public:
     int GetSize() const{
         return size_;
     }
-    T Get(const int index) const{
+    T Get(const int& index) const{
         if (index < 0 || index >= size_){
             //ошибка
         }
         return elements_[index];
     }
-    void Set(const int index, const T value){
+    DynamicArray<T>* GetSubArray(const int& startIndex, const int& endIndex){
+        DynamicArray<T>* subArray = new DynamicArray<T>;
+        for (int i = startIndex; i <= endIndex; i++){
+            subArray->Append(Get(i));
+        }
+        return subArray;
+    }
+    void Append(const T& value){
+        Resize(size_ + 1);
+        Set(size_ - 1, value);
+    }
+    void Prepend(const T& value){
+        Resize(size_ + 1);
+        for (int i = size_ - 1; i > 0; i--){
+            Set(i, elements_[i-1]);
+        }
+        Set(0, value);
+    }
+    void Set(const int& index, const T& value){
         if (index < 0 || index >= size_){
             return; //ошибка
         }
         elements_[index] = value;
     }
-    void Resize(const int newSize){
+    void Resize(const int& newSize){
         if (newSize > memorySize_){
             int newMemorySize = newSize > 2 * size_ ? newSize : 2 * size_;
             T *newElements = new T[newMemorySize];
@@ -64,7 +82,7 @@ public:
             size_ = newSize;
             memorySize_ = newMemorySize;
         }
-        if (newSize < size_){
+        else if (newSize < size_){
             T *newElements = new T[newSize];
             for (int i = 0; i < newSize; i++)
                 newElements[i] = elements_[i];
@@ -72,6 +90,9 @@ public:
             elements_ = newElements;
             size_ = newSize;
             memorySize_ = size_;
+        }
+        else if (newSize >= size_ && newSize <= memorySize_){
+            size_ = newSize;
         }
     }
     /*

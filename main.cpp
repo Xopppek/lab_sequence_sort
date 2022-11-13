@@ -6,66 +6,50 @@
 
 int main() {
     int a[] = {1,4,3,2,5,6};
-    LinkedListSequence<int> array(a, 6);
+    ArraySequence<int> array(a, 6);
+    LinkedListSequence<int> list(a, 6);
 
-    //LinkedList<int> arr(a, 6);
-    //LinkedList<int>* b = arr.GetSubList(2,4);
+    array.Append(15);
+    list.Append(15);
 
-    /*
-    LinkedList<int> list(a, 6);
-    int y = 2;
-    list[y]= 4;
-    list.Append(200);
-    list.Prepend(900);
-    for(int i = 0; i < list.GetLength(); i++)
-        std::cout << list[i] << ' ';
-        */
-
-
-
-    //std::cout << std::endl;
-
-    //std::cout << array[5] << std::endl;
-
-    //array[5] = 8;
     for(int i = 0; i < array.GetLength(); i++)
         std::cout << array.Get(i) << ' ';
-    std::cout << std::endl;
-/*
-    array[5] = 100;
+    std::cout << "array" << std::endl;
+    for(int i = 0; i < list.GetLength(); i++)
+        std::cout << list.Get(i) << ' ';
+    std::cout << "list" << std::endl;
 
-    array.Append(600);
-    array.Prepend(800);*/
-    array.InsertAt(200, 6);
-    //array.Prepend(5);
-    //array.Set(3, 200);
-    LinkedListSequence<int>* b = array.GetSubSequence(2, 5);
+    array.Prepend(50);
+    list.Prepend(50);
 
-
-    for (int i = 0; i < b->GetLength(); i++){
-        std::cout << (*b)[i] << ' ';
-    }
-
-    /*std::cout << std::endl;
     for(int i = 0; i < array.GetLength(); i++)
-        std::cout << array[i] << ' ';
+        std::cout << array.Get(i) << ' ';
+    std::cout << "array" << std::endl;
+    for(int i = 0; i < list.GetLength(); i++)
+        std::cout << list.Get(i) << ' ';
+    std::cout << "list" << std::endl;
 
-    std::cout << std::endl;
-    std::cout << array.GetLength() << ' ';*/
+    array.InsertAt(200, 3);
+    list.InsertAt(200, 3);
 
-    /*
-    std::cout << std::endl;
-    std::cout << array[5] << std::endl;
-    std::cout << std::endl;
+    for(int i = 0; i < array.GetLength(); i++)
+        std::cout << array.Get(i) << ' ';
+    std::cout << "array" << std::endl;
+    for(int i = 0; i < list.GetLength(); i++)
+        std::cout << list.Get(i) << ' ';
+    std::cout << "list" << std::endl;
 
-    //for(int i = 0; i < 5; i++)
-        //std::cout << list[i] << ' ';
-        //int* b = &(array[0]);
+    ArraySequence<int> *subArray = array.GetSubSequence(2, 5);
+    LinkedListSequence<int> *subList = list.GetSubSequence(2, 5);
 
-    std::cout << b[0] << " " << b[1] << " ";
-    delete &array;
+    for (int i = 0; i < subArray->GetLength(); i++){
+        std::cout << (*subArray)[i] << ' ';
+    }
+    std::cout << "array" << std::endl;
+    for (int i = 0; i < subList->GetLength(); i++){
+        std::cout << (*subList)[i] << ' ';
+    }
+    std::cout << "list" << std::endl;
 
-    std::cout << b[0] << " " << b[1];
-*/
     return 0;
 }
