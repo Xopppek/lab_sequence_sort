@@ -1,13 +1,19 @@
 #ifndef LAB2SEM2_DYNAMIC_ARRAY_H
 #define LAB2SEM2_DYNAMIC_ARRAY_H
 
+#include "base_iterator.h"
+
 template <typename T>
 class DynamicArray{
 private:
-    T *elements_;
+    T* elements_;
     int size_;
     int memorySize_;
 public:
+    class Iterator;
+    Iterator begin() { return elements_; }
+    Iterator end() { return elements_ + size_; }
+
     DynamicArray(){
         elements_ = nullptr;
         size_ = 0;
@@ -103,6 +109,27 @@ public:
     T& GetElementPointer(int index){
         return elements_[index];
     }
+
+    class Iterator : BaseIterator{
+    private:
+        T* currentElement;
+    public:
+        Iterator(T* first) : currentElement(first){}
+
+        void operator+= (int shift) { currentElement += shift;}
+        void operator-= (int shift) { currentElement -= shift;}
+
+        T& operator++ (int) { return *currentElement++; }
+        T& operator++ () { return *++currentElement; }
+        T& operator-- (int) { return *currentElement--; }
+        T& operator-- () { return *--currentElement; }
+
+        bool operator== (const Iterator& comparingIterator)
+            { return currentElement != comparingIterator.currentElement; }
+        bool operator!= (const Iterator& comparingIterator)
+            { return currentElement != comparingIterator.currentElement; }
+        T& operator* () { return *currentElement; }
+    };
 };
 
 #endif //LAB2SEM2_DYNAMIC_ARRAY_H

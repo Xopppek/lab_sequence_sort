@@ -9,6 +9,9 @@ class ArraySequence : Sequence <T> {
 private:
     DynamicArray<T>* array_;
 public:
+    typename DynamicArray<T>::Iterator begin() {return array_->begin(); }
+    typename DynamicArray<T>::Iterator end() { return array_->end(); }
+
     ArraySequence(){
         array_ = new DynamicArray<T>;
     }
@@ -64,6 +67,7 @@ public:
     T& operator[] (const int& index){
         return array_->GetElementPointer(const_cast<int &>(index));
     }
+
 };
 
 

@@ -51,5 +51,23 @@ int main() {
     }
     std::cout << "list" << std::endl;
 
+    std::cout << std::endl;
+
+    char b[] = {'a', 'b', 'c', 'd', 'e', 'f', 'j'};
+    DynamicArray<char> dynamicArray(b, 7);
+    auto iter = dynamicArray.begin();
+    while (iter != dynamicArray.end()) {
+        std::cout << *iter << ' ';
+        iter++;
+    }
+    std::cout << std::endl;
+    ArraySequence<char> charSequence(b, 7);
+    auto it = charSequence.begin();
+    while (it != charSequence.end()) {
+        std::cout << *it << ' ';
+        it++;
+    }
+    std::cout << std::endl;
+
     return 0;
 }
