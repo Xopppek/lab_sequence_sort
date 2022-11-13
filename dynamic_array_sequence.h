@@ -40,24 +40,13 @@ public:
     }
     ArraySequence<T>* GetSubSequence(const int& startIndex, const int& endIndex){
         ArraySequence<T>* subSequence = new ArraySequence<T>;
-        /*for (int i = startIndex; i <= endIndex; i++){
-            subSequence->Append(array_->Get(i));
-        }
-        return subSequence;*/
         subSequence->array_ = array_->GetSubArray(startIndex, endIndex);
         return subSequence;
     }
     void Append(const T& value){
-        /*array_->Resize(array_->GetSize() + 1);
-        array_->Set(array_->GetSize() - 1, value);*/
         array_->Append(value);
     }
     void Prepend(const T& value){
-        /*array_->Resize(array_->GetSize() + 1);
-        for (int i = 1; i < array_->GetSize(); i++){
-            array_->Set(i, array_->Get(i - 1));
-        }
-        array_->Set(0, value);*/
         array_->Prepend(value);
     }
     void Set(const int& index, const T& value){

@@ -39,7 +39,6 @@ public:
     }
     LinkedListSequence<T>* GetSubSequence(const int& startIndex, const int& endIndex){
         LinkedListSequence<T>* subList = new LinkedListSequence<T>;
-        //SubList(list_->GetSubList(startIndex, endIndex));
         subList->list_ = list_->GetSubList(startIndex, endIndex);
         return subList;
     }
