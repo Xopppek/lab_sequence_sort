@@ -12,6 +12,10 @@ private:
     Element* lastElement;
     int size_;
 public:
+    class Iterator;
+    Iterator begin() { return firstElement; }
+    Iterator end() { return lastElement->next; }
+
     LinkedList(){
         firstElement = nullptr;
         lastElement = nullptr;
@@ -168,6 +172,33 @@ public:
             currentElement = currentElement->next;
         return (currentElement->value_);
     }
+
+    class Iterator : BaseIterator{
+    private:
+        Element* currentElement;
+    public:
+        Iterator(Element* first) : currentElement(first){}
+
+        void operator+= (int shift) { for (int i = 0; i < shift; i++) { currentElement = currentElement->next; } }
+
+        Element* operator++ (int)
+        {
+            Element* temp = currentElement;
+            currentElement = currentElement->next;
+            return temp;
+        }
+        Element* operator++ ()
+        {
+            currentElement = currentElement->next;
+            return currentElement;
+        }
+
+        bool operator== (const Iterator& comparingIterator)
+        { return currentElement != comparingIterator.currentElement; }
+        bool operator!= (const Iterator& comparingIterator)
+        { return currentElement != comparingIterator.currentElement; }
+        T& operator* () { return currentElement->value_; }
+    };
 };
 
 #endif //LAB2SEM2_LINKED_LIST_H
