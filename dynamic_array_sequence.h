@@ -65,7 +65,8 @@ public:
     }
 
     T& operator[] (const int& index){
-        return array_->GetElementPointer(const_cast<int &>(index));
+       // return array_->GetElementPointer(const_cast<int &>(index));
+       return (*array_)[index];
     }
 
 };

@@ -60,7 +60,8 @@ public:
     }
 
     T& operator[] (const int& index){
-        return list_->GetElementPointer(index);
+       // return list_->GetElementPointer(index);
+       return (*list_)[index];
     }
 };
 

@@ -152,7 +152,7 @@ public:
         size_++;
     }
 
-    /*
+
     T& operator[] (const int index){
         //обработать OutOfRange
         if (index == size_ - 1)
@@ -161,7 +161,7 @@ public:
         for (int i = 0; i < index; i++)
             currentElement = currentElement->next;
         return (currentElement->value_);
-    }*/
+    }
 
     T& GetElementPointer (const int& index){
         //обработать OutOfRange

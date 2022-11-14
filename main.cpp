@@ -12,21 +12,24 @@ int main() {
     array.Append(15);
     list.Append(15);
 
+    array[0] = 200;
+    list[0] = 200;
+
     for(int i = 0; i < array.GetLength(); i++)
-        std::cout << array.Get(i) << ' ';
+        std::cout << array[i] << ' ';
     std::cout << "array" << std::endl;
     for(int i = 0; i < list.GetLength(); i++)
-        std::cout << list.Get(i) << ' ';
+        std::cout << list[i] << ' ';
     std::cout << "list" << std::endl;
 
     array.Prepend(50);
     list.Prepend(50);
 
     for(int i = 0; i < array.GetLength(); i++)
-        std::cout << array.Get(i) << ' ';
+        std::cout << array[i] << ' ';
     std::cout << "array" << std::endl;
     for(int i = 0; i < list.GetLength(); i++)
-        std::cout << list.Get(i) << ' ';
+        std::cout << list[i] << ' ';
     std::cout << "list" << std::endl;
 
     array.InsertAt(200, 3);

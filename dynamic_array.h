@@ -101,14 +101,15 @@ public:
             size_ = newSize;
         }
     }
-    /*
+
     T& operator[] (int index){
         //обработать OutOfRange
         return elements_[index];
-    }*/
-    T& GetElementPointer(int index){
-        return elements_[index];
     }
+
+    /*T& GetElementPointer(int index){
+        return elements_[index];
+    }*/
 
     class Iterator : BaseIterator{
     private:
