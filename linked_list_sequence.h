@@ -9,8 +9,12 @@ private:
     LinkedList<T>* list_;
 public:
 
-    typename LinkedList<T>::Iterator begin() {return list_->begin(); }
-    typename LinkedList<T>::Iterator end() { return list_->end(); }
+    //typename LinkedList<T>::Iterator begin() {return list_->begin(); }
+    //typename LinkedList<T>::Iterator end() { return list_->end(); }
+    
+    auto begin() {return list_->begin(); }
+    auto end() { return list_->end(); }
+
 
     LinkedListSequence(){
         list_ = new LinkedList<T>;

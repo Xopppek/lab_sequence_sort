@@ -9,8 +9,11 @@ class ArraySequence : Sequence <T> {
 private:
     DynamicArray<T>* array_;
 public:
-    typename DynamicArray<T>::Iterator begin() {return array_->begin(); }
-    typename DynamicArray<T>::Iterator end() { return array_->end(); }
+    //typename DynamicArray<T>::Iterator begin() {return array_->begin(); }
+    //typename DynamicArray<T>::Iterator end() { return array_->end(); }
+
+    auto end() { return array_->end(); }
+    auto begin() { return array_->begin(); }
 
     ArraySequence(){
         array_ = new DynamicArray<T>;
