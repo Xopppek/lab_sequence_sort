@@ -107,10 +107,6 @@ public:
         return elements_[index];
     }
 
-    /*T& GetElementPointer(int index){
-        return elements_[index];
-    }*/
-
     class Iterator : BaseIterator{
     private:
         T* currentElement;

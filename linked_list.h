@@ -163,16 +163,6 @@ public:
         return (currentElement->value_);
     }
 
-    T& GetElementPointer (const int& index){
-        //обработать OutOfRange
-        if (index == size_ - 1)
-            return (lastElement->value_);
-        Element* currentElement = firstElement;
-        for (int i = 0; i < index; i++)
-            currentElement = currentElement->next;
-        return (currentElement->value_);
-    }
-
     class Iterator : BaseIterator{
     private:
         Element* currentElement;

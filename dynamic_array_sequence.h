@@ -65,13 +65,9 @@ public:
     }
 
     T& operator[] (const int& index){
-       // return array_->GetElementPointer(const_cast<int &>(index));
        return (*array_)[index];
     }
 
 };
-
-
-
 
 #endif //LAB2SEM2V2_DYNAMIC_ARRAY_SEQUENCE_H
