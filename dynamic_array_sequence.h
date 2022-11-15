@@ -67,6 +67,11 @@ public:
         array_->Set(index, value);
     }
 
+    void Swap(T* value1, T* value2)
+    {
+        array_->Swap(value1, value2);
+    }
+
     T& operator[] (const int& index){
        return (*array_)[index];
     }

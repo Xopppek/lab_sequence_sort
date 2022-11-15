@@ -13,6 +13,7 @@ public:
     virtual void Prepend(const T& value) = 0;
     virtual void Set(const int& index, const T& value) = 0;
     virtual void InsertAt(const T& value, const int& index) = 0;
+    virtual void Swap(T* value1, T* value2) = 0;
     virtual T& operator[] (const int& index) = 0;
 };
 

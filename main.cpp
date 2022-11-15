@@ -60,14 +60,21 @@ int main() {
 
     ArraySequence<char> charSequence(b, 7);
     auto it = charSequence.begin();
+    auto it3 = charSequence.begin();
+    it3 += 4;
+    charSequence.Swap(&(*it), &*it3);
     while (it != charSequence.end()) {
+        //*it = 'b';
         std::cout << *it << ' ';
         it++;
     }
     std::cout << "array" << std::endl;
 
     LinkedListSequence<char> linkedList(b, 7);
+    auto it4 = linkedList.begin();
+    it4 += 4;
     auto it2 = linkedList.begin();
+    linkedList.Swap(&*it2, &*it4);
     while (it2 != linkedList.end()) {
         std::cout << *it2 << ' ';
         it2++;

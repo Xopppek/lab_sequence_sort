@@ -11,7 +11,7 @@ public:
 
     //typename LinkedList<T>::Iterator begin() {return list_->begin(); }
     //typename LinkedList<T>::Iterator end() { return list_->end(); }
-    
+
     auto begin() {return list_->begin(); }
     auto end() { return list_->end(); }
 
@@ -61,6 +61,11 @@ public:
     }
     void InsertAt(const T& value, const int& index){
         list_->InsertAt(value, index);
+    }
+
+    void Swap(T* value1, T* value2)
+    {
+        list_->Swap(value1, value2);
     }
 
     T& operator[] (const int& index){
