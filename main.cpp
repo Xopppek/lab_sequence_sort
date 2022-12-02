@@ -2,6 +2,7 @@
 #include "linked_list.h"
 #include "dynamic_array_sequence.h"
 #include "linked_list_sequence.h"
+#include "experiments.h"
 #include <iostream>
 
 int main() {
@@ -80,6 +81,9 @@ int main() {
         it2++;
     }
     std::cout << "list" << std::endl;
+
+    Experiments<char>::print(charSequence.begin(), charSequence.end());
+    Experiments<char>::print(linkedList.begin(), linkedList.end());
 
     return 0;
 }

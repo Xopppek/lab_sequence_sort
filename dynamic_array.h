@@ -11,6 +11,7 @@ private:
     int memorySize_;
 public:
     class Iterator;
+
     Iterator begin() { return elements_; }
     Iterator end() { return elements_ + size_; }
 
