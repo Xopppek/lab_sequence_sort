@@ -3,7 +3,17 @@
 #include "dynamic_array_sequence.h"
 #include "linked_list_sequence.h"
 #include "experiments.h"
+#include "sorter.h"
 #include <iostream>
+
+
+bool compare(char a, char b){
+    return b < a;
+}
+
+bool com(int a, int b){
+    return a > b;
+}
 
 int main() {
     int a[] = {1,4,3,2,5,6};
@@ -82,8 +92,27 @@ int main() {
     }
     std::cout << "list" << std::endl;
 
+    it3 = charSequence.begin();
+    it3 += 3;
+    it = it3;
+    it += 2;
+
+
+
     Experiments<char>::print(charSequence.begin(), charSequence.end());
     Experiments<char>::print(linkedList.begin(), linkedList.end());
+    Experiments<char>::print(it3, it);
+
+    Sorter<char>::bubbleSort(charSequence.begin(), charSequence.end(), compare);
+
+    Experiments<char>::print(charSequence.begin(), charSequence.end());
+
+    int nn[] = {1, 4, 3, 5, 6, 2};
+    ArraySequence<int> omg(nn, 6);
+
+    Sorter<int>::bubbleSort(omg.begin(), omg.end(), com);
+    Experiments<int>::print(omg.begin(), omg.end());
+
 
     return 0;
 }
