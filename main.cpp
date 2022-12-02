@@ -15,6 +15,10 @@ bool com(int a, int b){
     return a > b;
 }
 
+bool com1(int a, int b){
+    return a < b;
+}
+
 int main() {
     int a[] = {1,4,3,2,5,6};
     ArraySequence<int> array(a, 6);
@@ -112,6 +116,14 @@ int main() {
 
     Sorter<int>::bubbleSort(omg.begin(), omg.end(), com);
     Experiments<int>::print(omg.begin(), omg.end());
+
+    ArraySequence<int> hh;
+    Sorter<int>::bubbleSort(hh.begin(), hh.end(), com);
+    Experiments<int>::print(hh.begin(), hh.end());
+
+    LinkedListSequence<int> bn(nn, 6);
+    Sorter<int>::bubbleSort(bn.begin(), bn.end(), com1);
+    Experiments<int>::print(bn.begin(), bn.end());
 
 
     return 0;
