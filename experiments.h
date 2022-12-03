@@ -14,7 +14,13 @@ public:
             std::cout << *it << " ";
             it++;
         }
-        std::cout << "printed" << std::endl;
+        //std::cout << "printed" << std::endl;
+        if (it.tag == BaseIterator::arrayIterator){
+            std::cout << "array" << std::endl;
+        } else if (it.tag == BaseIterator::listIterator){
+            std::cout << "list" << std::endl;
+        }
+
     };
 
 };

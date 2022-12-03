@@ -7,15 +7,15 @@
 #include <iostream>
 
 
-bool compare(char a, char b){
+bool compare(const char& a, const char& b){
     return b < a;
 }
 
-bool com(int a, int b){
+bool com(const int& a, const int& b){
     return a > b;
 }
 
-bool com1(int a, int b){
+bool com1(const int& a, const int& b){
     return a < b;
 }
 
@@ -105,28 +105,10 @@ int main() {
 
 
     Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
-    Sorter<char, typename DynamicArray<char>::Iterator>::bubbleSort(charSequence.begin(), charSequence.end(), compare);
+    Sorter<char, typename DynamicArray<char>::Iterator>::BubbleSort(charSequence.begin(), charSequence.end(), compare);
     Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
-    //Experiments<char>::print(linkedList.begin(), linkedList.end());
-    //Experiments<char>::print(it3, it);
-/*
-    Sorter<char>::bubbleSort(charSequence.begin(), charSequence.end(), compare);
 
-    Experiments<char>::print(charSequence.begin(), charSequence.end());
 
-    int nn[] = {1, 4, 3, 5, 6, 2};
-    ArraySequence<int> omg(nn, 6);
-
-    Sorter<int>::bubbleSort(omg.begin(), omg.end(), com);
-    Experiments<int>::print(omg.begin(), omg.end());
-
-    ArraySequence<int> hh;
-    Sorter<int>::bubbleSort(hh.begin(), hh.end(), com);
-    Experiments<int>::print(hh.begin(), hh.end());
-
-    LinkedListSequence<int> bn(nn, 6);
-    Sorter<int>::bubbleSort(bn.begin(), bn.end(), com1);
-    Experiments<int>::print(bn.begin(), bn.end());*/
 
 
     return 0;
