@@ -138,6 +138,26 @@ public:
         T& operator-- (int) { return *currentElement--; }
         T& operator-- () { return *--currentElement; }
 
+        bool operator< (const Iterator& comparingIterator){
+            if (currentElement < comparingIterator.currentElement)
+                return true;
+            return false;
+        }
+        bool operator<= (const Iterator& comparingIterator){
+            if (currentElement <= comparingIterator.currentElement)
+                return true;
+            return false;
+        }
+        bool operator> (const Iterator& comparingIterator){
+            if (currentElement > comparingIterator.currentElement)
+                return true;
+            return false;
+        }
+        bool operator>= (const Iterator& comparingIterator){
+            if (currentElement >= comparingIterator.currentElement)
+                return true;
+            return false;
+        }
         bool operator== (const Iterator& comparingIterator)
             { return currentElement != comparingIterator.currentElement; }
         bool operator!= (const Iterator& comparingIterator)

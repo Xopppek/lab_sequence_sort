@@ -11,6 +11,10 @@ bool compare(const char& a, const char& b){
     return b < a;
 }
 
+bool com2(const char& a, const char& b){
+    return a > b;
+}
+
 bool com(const int& a, const int& b){
     return a > b;
 }
@@ -102,14 +106,16 @@ int main() {
 
     it3 = charSequence.begin();
 
-    Experiments<typename LinkedList<char>::Iterator>::print(linkedList.begin(), linkedList.end());
+    //Experiments<typename LinkedList<char>::Iterator>::print(linkedList.begin(), linkedList.end());
 
     Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
-    Sorter<char, typename DynamicArray<char>::Iterator>::BubbleSort(charSequence.begin(), charSequence.end(), compare);
+    /*Sorter<char, typename DynamicArray<char>::Iterator>::BubbleSort(charSequence.begin(), charSequence.end(), compare);
+    Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());*/
+
+    Sorter<char, typename DynamicArray<char>::Iterator>::QuickSort(charSequence.begin(), charSequence.end(), compare);
     Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
-
-
-
+    Sorter<char, typename DynamicArray<char>::Iterator>::BubbleSort(charSequence.begin(), charSequence.end(), com2);
+    Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
 
     return 0;
 }
