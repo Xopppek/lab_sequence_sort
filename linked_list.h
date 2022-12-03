@@ -1,6 +1,8 @@
 #ifndef LAB2SEM2_LINKED_LIST_H
 #define LAB2SEM2_LINKED_LIST_H
 
+#include "iterator_types.h"
+
 template <typename T>
 class LinkedList {
 private:
@@ -180,7 +182,7 @@ public:
     private:
         Element* currentElement;
     public:
-        Tag tag = Tag::listIterator;
+        IteratorTypes type = IteratorTypes::listIterator;
         Iterator(Element* first) : currentElement(first){}
 
         void operator+= (int shift) { for (int i = 0; i < shift; i++) { currentElement = currentElement->next; } }

@@ -2,6 +2,7 @@
 #define LAB2SEM2_DYNAMIC_ARRAY_H
 
 #include "base_iterator.h"
+#include "iterator_types.h"
 
 template <typename T>
 class DynamicArray{
@@ -125,7 +126,8 @@ public:
     private:
         T* currentElement;
     public:
-        Tag tag = Tag::arrayIterator;
+
+        IteratorTypes type = IteratorTypes::arrayIterator;
         Iterator(T* first) : currentElement(first){}
 
         void operator+= (int shift) { currentElement += shift;}

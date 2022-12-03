@@ -4,6 +4,7 @@
 
 #include "dynamic_array.h"
 #include "linked_list.h"
+#include "iterator_types.h"
 
 template <typename T>
 class Experiments {
@@ -15,9 +16,9 @@ public:
             it++;
         }
         //std::cout << "printed" << std::endl;
-        if (it.tag == BaseIterator::Tag::arrayIterator){
+        if (it.type == IteratorTypes::arrayIterator){
             std::cout << "array 0" << std::endl;
-        } else if (it.tag == BaseIterator::Tag::listIterator){
+        } else if (it.type == IteratorTypes::listIterator){
             std::cout << "list 0" << std::endl;
         }
 
