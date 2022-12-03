@@ -77,7 +77,10 @@ int main() {
     auto it = charSequence.begin();
     auto it3 = charSequence.begin();
     it3 += 4;
-    charSequence.Swap(&(*it), &*it3);
+    charSequence.Swap(it, it3);
+    it++;
+    it3--;
+    charSequence.Swap(it, it3);
     while (it != charSequence.end()) {
         //*it = 'b';
         std::cout << *it << ' ';
@@ -89,7 +92,8 @@ int main() {
     auto it4 = linkedList.begin();
     it4 += 4;
     auto it2 = linkedList.begin();
-    linkedList.Swap(&*it2, &*it4);
+    linkedList.Swap(it2, it4);
+    //linkedList.Swap(&(*it2), &*it4);
     while (it2 != linkedList.end()) {
         std::cout << *it2 << ' ';
         it2++;
@@ -97,16 +101,15 @@ int main() {
     std::cout << "list" << std::endl;
 
     it3 = charSequence.begin();
-    it3 += 3;
-    it = it3;
-    it += 2;
 
 
 
-    Experiments<char>::print(charSequence.begin(), charSequence.end());
-    Experiments<char>::print(linkedList.begin(), linkedList.end());
-    Experiments<char>::print(it3, it);
-
+    Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
+    Sorter<char, typename DynamicArray<char>::Iterator>::bubbleSort(charSequence.begin(), charSequence.end(), compare);
+    Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
+    //Experiments<char>::print(linkedList.begin(), linkedList.end());
+    //Experiments<char>::print(it3, it);
+/*
     Sorter<char>::bubbleSort(charSequence.begin(), charSequence.end(), compare);
 
     Experiments<char>::print(charSequence.begin(), charSequence.end());
@@ -123,7 +126,7 @@ int main() {
 
     LinkedListSequence<int> bn(nn, 6);
     Sorter<int>::bubbleSort(bn.begin(), bn.end(), com1);
-    Experiments<int>::print(bn.begin(), bn.end());
+    Experiments<int>::print(bn.begin(), bn.end());*/
 
 
     return 0;

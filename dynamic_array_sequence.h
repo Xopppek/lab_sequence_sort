@@ -72,6 +72,10 @@ public:
         array_->Swap(value1, value2);
     }
 
+    void Swap(typename DynamicArray<T>::Iterator iter1, typename DynamicArray<T>::Iterator iter2){
+        array_->Swap(iter1, iter2);
+    }
+
     T& operator[] (const int& index){
        return (*array_)[index];
     }

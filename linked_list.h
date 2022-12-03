@@ -159,6 +159,12 @@ public:
         *value2 = temp;
     }
 
+    void Swap(Iterator iter1, Iterator iter2){
+        T temp =  *iter1;
+        *iter1 = *iter2;
+        *iter2 = temp;
+    }
+
 
     T& operator[] (const int index){
         //обработать OutOfRange

@@ -8,23 +8,15 @@
 template <typename T>
 class Experiments {
 public:
-    static void print(typename DynamicArray<T>::Iterator startIter, typename DynamicArray<T>::Iterator endIter) {
+    static void print(T startIter, T endIter) {
         auto it = startIter;
         while (it != endIter) {
             std::cout << *it << " ";
             it++;
         }
-        std::cout << "it was array" << std::endl;
+        std::cout << "printed" << std::endl;
     };
 
-    static void print(typename LinkedList<T>::Iterator startIter, typename LinkedList<T>::Iterator endIter) {
-        auto it = startIter;
-        while (it != endIter) {
-            std::cout << *it << " ";
-            it++;
-        }
-        std::cout << "it was list" << std::endl;
-    };
 };
 
 #endif //MAIN_CPP_EXPERIMENTS_H

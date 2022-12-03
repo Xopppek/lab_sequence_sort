@@ -68,6 +68,10 @@ public:
         list_->Swap(value1, value2);
     }
 
+    void Swap(typename LinkedList<T>::Iterator iter1, typename LinkedList<T>::Iterator iter2){
+        list_->Swap(iter1, iter2);
+    }
+
     T& operator[] (const int& index){
        return (*list_)[index];
     }

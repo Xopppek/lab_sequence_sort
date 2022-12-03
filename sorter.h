@@ -6,10 +6,10 @@
 #include "dynamic_array.h"
 #include "linked_list.h"
 
-template <typename T>
+template <typename T, typename I>
 class Sorter {
 public:
-    static void bubbleSort(typename DynamicArray<T>::Iterator begin, typename DynamicArray<T>::Iterator end, bool comparator (T a, T b)){
+    static void bubbleSort(I begin, I end, bool comparator (T, T)){
         for (auto i = begin; i != end; ++i) {
             for (auto j = begin; j != i; ++j) {
                 if (comparator(*i, *j)) {
@@ -21,7 +21,7 @@ public:
         }
     }
 
-    static void bubbleSort(typename LinkedList<T>::Iterator begin, typename LinkedList<T>::Iterator end, bool comparator (T a, T b)){
+   /* static void bubbleSort(typename LinkedList<T>::Iterator begin, typename LinkedList<T>::Iterator end, bool comparator (T, T)){
         for (auto i = begin; i != end; ++i) {
             for (auto j = begin; j != i; ++j) {
                 if (comparator(*i, *j)) {
@@ -31,7 +31,7 @@ public:
                 }
             }
         }
-    }
+    }*/
 };
 
 #endif //MAIN_CPP_SORTER_H
