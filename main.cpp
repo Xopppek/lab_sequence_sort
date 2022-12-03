@@ -102,7 +102,7 @@ int main() {
 
     it3 = charSequence.begin();
 
-
+    Experiments<typename LinkedList<char>::Iterator>::print(linkedList.begin(), linkedList.end());
 
     Experiments<typename DynamicArray<char>::Iterator>::print(charSequence.begin(), charSequence.end());
     Sorter<char, typename DynamicArray<char>::Iterator>::BubbleSort(charSequence.begin(), charSequence.end(), compare);

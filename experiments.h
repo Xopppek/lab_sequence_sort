@@ -15,10 +15,10 @@ public:
             it++;
         }
         //std::cout << "printed" << std::endl;
-        if (it.tag == BaseIterator::arrayIterator){
-            std::cout << "array" << std::endl;
-        } else if (it.tag == BaseIterator::listIterator){
-            std::cout << "list" << std::endl;
+        if (it.tag == BaseIterator::Tag::arrayIterator){
+            std::cout << "array 0" << std::endl;
+        } else if (it.tag == BaseIterator::Tag::listIterator){
+            std::cout << "list 0" << std::endl;
         }
 
     };

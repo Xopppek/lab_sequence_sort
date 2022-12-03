@@ -180,7 +180,7 @@ public:
     private:
         Element* currentElement;
     public:
-        Tag tag = listIterator;
+        Tag tag = Tag::listIterator;
         Iterator(Element* first) : currentElement(first){}
 
         void operator+= (int shift) { for (int i = 0; i < shift; i++) { currentElement = currentElement->next; } }

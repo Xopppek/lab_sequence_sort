@@ -2,7 +2,7 @@
 #define MAIN_CPP_BASE_ITERATOR_H
 class BaseIterator{
 public:
-    enum Tag{
+    enum class Tag{
         arrayIterator,
         listIterator
     };

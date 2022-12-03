@@ -125,7 +125,7 @@ public:
     private:
         T* currentElement;
     public:
-        Tag tag = arrayIterator;
+        Tag tag = Tag::arrayIterator;
         Iterator(T* first) : currentElement(first){}
 
         void operator+= (int shift) { currentElement += shift;}
