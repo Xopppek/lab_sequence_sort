@@ -13,7 +13,7 @@ public:
     static void BubbleSort(I begin, I end, bool comparator (const T&, const T&)){
         for (auto i = begin; i != end; ++i) {
             for (auto j = begin; j != i; ++j) {
-                if (comparator(*j, *i)) {
+                if (comparator(*i, *j)) {
                     T temp = *i;
                     *i = *j;
                     *j = temp;
@@ -23,6 +23,7 @@ public:
     }
 
     static void QuickSort(I begin, I end, bool comparator (const T&, const T&)){
+        --end;
         if (begin < end)
             _qsort_(begin, end, comparator, *begin);
     }
