@@ -141,7 +141,7 @@ int main() {
     auto current_time = std::chrono::system_clock::now();
     std::time_t current_time_t = std::chrono::system_clock::to_time_t(current_time);
     int seed = current_time_t;
-    std::cout << seed << "\n";
+    //std::cout << seed << "\n";
     srand(seed);
 
     int n = 10000;
@@ -165,18 +165,29 @@ int main() {
     Sorter<int, DynamicArray<int>::Iterator>::BubbleSort(arraySequence1.begin(), arraySequence1.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
-    std::cout << "BubbleSort: " << elapsed_ms.count() << " ms\n";
+    std::cout << "BubbleSort Array: " << elapsed_ms.count() << " ms\n";
 
-    Experiments<typename DynamicArray<int>::Iterator>::print(arraySequence1.begin(), arraySequence1.end());
+    //Experiments<typename DynamicArray<int>::Iterator>::print(arraySequence1.begin(), arraySequence1.end());
 
 
     begin = std::chrono::steady_clock::now();
     Sorter<int, DynamicArray<int>::Iterator>::QuickSort(arraySequence2.begin(), arraySequence2.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
-    std::cout << "QuickSort: " << elapsed_ms.count() << " ms\n";
+    std::cout << "QuickSort Array: " << elapsed_ms.count() << " ms\n";
 
-    Experiments<typename DynamicArray<int>::Iterator>::print(arraySequence2.begin(), arraySequence2.end());
+    //Experiments<typename DynamicArray<int>::Iterator>::print(arraySequence2.begin(), arraySequence2.end());
+
+
+    LinkedListSequence<int> list(hu, n);
+
+    begin = std::chrono::steady_clock::now();
+    Sorter<int, LinkedList<int>::Iterator>::BubbleSort(list.begin(), list.end(), com);
+    end = std::chrono::steady_clock::now();
+    elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
+    std::cout << "BubbleSort List: " << elapsed_ms.count() << " ms\n";
+
+   // Experiments<typename LinkedList<int>::Iterator>::print(list.begin(), list.end());
 
 
 
