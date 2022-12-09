@@ -37,7 +37,7 @@ public:
     static void BubbleSort(I begin, I end, bool comparator(const T&, const T&)){
         for (auto i = begin; i != end; ++i) {
             for (auto j = begin; j != i; ++j) {
-                if (comparator(*i, *j)) {
+                if (comparator(*j, *i)) {
                     swap(*i, *j);
                 }
             }
@@ -46,10 +46,13 @@ public:
 
     static void QuickSort(I begin, I end, bool comparator(const T&, const T&)){
         switch (begin.type){
-            case (IteratorTypes::arrayIterator):
-                end--;
-                //qsort_array(begin, end, comparator, )
+            case (IteratorTypes::arrayIterator): {
+                if (begin < end) {
+                    end--;
+                    qsort_array(begin, end, comparator);
+                }
                 break;
+            }
             case (IteratorTypes::listIterator):
                 break;
         }
@@ -66,37 +69,31 @@ public:
     }
 
 private:
-    static void qsort_array(){
+    static void qsort_array(I begin, I end, bool comparator(const T&, const T&)){
+        auto pivot_iterator = begin;
+        int length = distance(begin, end);
+        pivot_iterator = begin;
+        pivot_iterator += (length / 2);
+        T pivot = *(pivot_iterator);
+        I left = begin;
+        I right = end;
+        do {
+            while(left < end && comparator(pivot, *left))
+                ++left;
+            while((right > begin) && comparator(*right, pivot))
+                --right;
+            if(left <= right){
+                swap(*left, *right);
+                ++left;
+                --right;
+            }
+        } while(left <= right);
+        if(right > begin)
+            qsort_array(begin, right, comparator);
+        if(end > left)
+            qsort_array(left, end, comparator);
 
     }
-    /*static void _qsort_(I begin, I end, bool comparator(const T&, const T&), const T& pivot){
-        auto it = begin;
-        int length = 0;
-        while (it != end){
-            it++;
-            length++;
-        }
-        it = begin;
-        it += (length / 2);
-        T v = *(it);
-        I f = begin;
-        I l = end;
-        do {
-            while(f < end && comparator(*f, v))
-                ++f;
-            while((l > begin) && comparator(v, *l))
-                --l;
-            if(f <= l){
-                std::swap(*f, *l);
-                ++f;
-                --l;
-            }
-        } while(f <= l);
-        if(l > begin)
-            _qsort_(begin, l, comparator, v);
-        if(end > f)
-            _qsort_(f, end, comparator, v);
-    }*/
 };
 
 #endif //MAIN_CPP_SORTER_H
