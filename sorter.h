@@ -31,52 +31,82 @@ int distance(Iterator first, Iterator second){
     return res;
 }
 
-template <typename T, typename I>
+template <typename T>
 class Sorter {
 public:
-    static void BubbleSort(I begin, I end, bool comparator(const T&, const T&)){
-        for (auto i = begin; i != end; ++i) {
-            for (auto j = begin; j != i; ++j) {
-                if (comparator(*j, *i)) {
+    static void BubbleSort(typename DynamicArray<T>::Iterator begin,
+                           typename DynamicArray<T>::Iterator end,
+                           bool comparator(const T&, const T&)){
+        for (auto i = begin; i != end; ++i)
+            for (auto j = begin; j != i; ++j)
+                if (comparator(*j, *i))
                     swap(*i, *j);
-                }
-            }
+    }
+
+    static void BubbleSort(typename LinkedList<T>::Iterator begin,
+                           typename LinkedList<T>::Iterator end,
+                           bool comparator(const T&, const T&)){
+        for (auto i = begin; i != end; ++i)
+            for (auto j = begin; j != i; ++j)
+                if (comparator(*j, *i))
+                    swap(*i, *j);
+    }
+
+    static void QuickSort(typename DynamicArray<T>::Iterator begin,
+                          typename DynamicArray<T>::Iterator end,
+                          bool comparator(const T&, const T&)){
+        if (begin < end) {
+            end--;
+            qsort_array(begin, end, comparator);
         }
     }
 
-    static void QuickSort(I begin, I end, bool comparator(const T&, const T&)){
-        switch (begin.type){
-            case (IteratorTypes::arrayIterator): {
-                if (begin < end) {
-                    end--;
-                    qsort_array(begin, end, comparator);
-                }
-                break;
-            }
-            case (IteratorTypes::listIterator):
-                break;
-        }
-
-
-
-
-
-
-
-        /*--end;
-        if (begin < end)
-            _qsort_(begin, end, comparator, *begin);*/
+    static void QuickSort(typename LinkedList<T>::Iterator begin,
+                          typename LinkedList<T>::Iterator end,
+                          bool comparator(const T&, const T&)){
+        if (distance(begin, end) <= 0) return;
+        qsort_list(begin, end, comparator);
     }
 
 private:
-    static void qsort_array(I begin, I end, bool comparator(const T&, const T&)){
+    static void qsort_list(typename LinkedList<T>::Iterator begin,
+                           typename LinkedList<T>::Iterator end,
+                           bool comparator(const T&, const T&)){
+        if (distance(begin, end) <= 0) return;
+        auto pivot = listPartition(begin, end, comparator);
+        qsort_list(begin, pivot, comparator);
+        qsort_list(++pivot, end, comparator);
+    }
+
+    static typename LinkedList<T>::Iterator listPartition(
+            typename LinkedList<T>::Iterator head,
+            typename LinkedList<T>::Iterator tail,
+            bool comparator(const T&, const T&)){
+        auto pivot = head;
+        auto prev = head;
+        auto current = head;
+        current++;
+        while (current != tail){
+            if (comparator(*pivot, *current)) {
+                ++prev;
+                swap(*prev, *current);
+            }
+            current++;
+        }
+        swap(*prev, *pivot);
+        return prev;
+    }
+
+    static void qsort_array(typename DynamicArray<T>::Iterator begin,
+                            typename DynamicArray<T>::Iterator end,
+                            bool comparator(const T&, const T&)){
         auto pivot_iterator = begin;
         int length = distance(begin, end);
         pivot_iterator = begin;
         pivot_iterator += (length / 2);
         T pivot = *(pivot_iterator);
-        I left = begin;
-        I right = end;
+        auto left = begin;
+        auto right = end;
         do {
             while(left < end && comparator(pivot, *left))
                 ++left;
@@ -92,7 +122,6 @@ private:
             qsort_array(begin, right, comparator);
         if(end > left)
             qsort_array(left, end, comparator);
-
     }
 };
 

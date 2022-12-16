@@ -122,7 +122,7 @@ public:
         return elements_[index];
     }
 
-    class Iterator : BaseIterator{
+    class Iterator : public BaseIterator{
     private:
         T* currentElement;
     public:

@@ -15,15 +15,12 @@ public:
             std::cout << *it << " ";
             it++;
         }
-        //std::cout << "printed" << std::endl;
         if (it.type == IteratorTypes::arrayIterator){
-            std::cout << "array 0" << std::endl;
+            std::cout << "array printed" << std::endl;
         } else if (it.type == IteratorTypes::listIterator){
-            std::cout << "list 0" << std::endl;
+            std::cout << "list printed" << std::endl;
         }
-
     };
-
 };
 
 #endif //MAIN_CPP_EXPERIMENTS_H

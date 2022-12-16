@@ -16,7 +16,7 @@ private:
 public:
     class Iterator;
     Iterator begin() { return firstElement; }
-    Iterator end() { return lastElement->next; }
+    Iterator end() { return (size_ > 0) ? lastElement->next : firstElement; }
 
     LinkedList(){
         firstElement = nullptr;
@@ -36,6 +36,9 @@ public:
         }
         lastElement = currentElement;
         lastElement->next = nullptr;
+        if (size_ == 0){
+            lastElement = firstElement;
+        }
     }
     LinkedList(const LinkedList<T>& copyingList){
         size_ = copyingList.size_;
@@ -178,7 +181,7 @@ public:
         return (currentElement->value_);
     }
 
-    class Iterator : BaseIterator{
+    class Iterator : public BaseIterator{
     private:
         Element* currentElement;
     public:
