@@ -35,7 +35,7 @@ int main() {
     ArraySequence<int> arraySequence3(hu, n);
 
     begin = std::chrono::steady_clock::now();
-    Sorter<int>::BubbleSort(arraySequence1.begin(), arraySequence1.end(), com);
+    Sorter<int, DynamicArray<int>::Iterator>::BubbleSort(arraySequence1.begin(), arraySequence1.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
     std::cout << "BubbleSort Array: " << elapsed_ms.count() << " ms\n";
@@ -43,7 +43,7 @@ int main() {
         Experiments<typename DynamicArray<int>::Iterator>::print(arraySequence1.begin(), arraySequence1.end());
 
     begin = std::chrono::steady_clock::now();
-    Sorter<int>::QuickSort(arraySequence2.begin(), arraySequence2.end(), com);
+    Sorter<int, DynamicArray<int>::Iterator>::QuickSort(arraySequence2.begin(), arraySequence2.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
     std::cout << "QuickSort Array: " << elapsed_ms.count() << " ms\n";
@@ -51,7 +51,7 @@ int main() {
         Experiments<typename DynamicArray<int>::Iterator>::print(arraySequence2.begin(), arraySequence2.end());
 
     begin = std::chrono::steady_clock::now();
-    Sorter<int>::MergeSort(arraySequence3.begin(), arraySequence3.end(), com);
+    Sorter<int, DynamicArray<int>::Iterator>::MergeSort(arraySequence3.begin(), arraySequence3.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
     std::cout << "MergeSort Array: " << elapsed_ms.count() << " ms\n";
@@ -64,7 +64,7 @@ int main() {
 
 
     begin = std::chrono::steady_clock::now();
-    Sorter<int>::BubbleSort(list1.begin(), list1.end(), com);
+    Sorter<int, LinkedList<int>::Iterator>::BubbleSort(list1.begin(), list1.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
     std::cout << "BubbleSort List: " << elapsed_ms.count() << " ms\n";
@@ -72,7 +72,7 @@ int main() {
         Experiments<typename LinkedList<int>::Iterator>::print(list1.begin(), list1.end());
 
     begin = std::chrono::steady_clock::now();
-    Sorter<int>::QuickSort(list2.begin(), list2.end(), com);
+    Sorter<int, LinkedList<int>::Iterator>::QuickSort(list2.begin(), list2.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
     std::cout << "QuickSort List: " << elapsed_ms.count() << " ms\n";
@@ -80,7 +80,7 @@ int main() {
         Experiments<typename LinkedList<int>::Iterator>::print(list2.begin(), list2.end());
 
     begin = std::chrono::steady_clock::now();
-    Sorter<int>::MergeSort(list3.begin(), list3.end(), com);
+    Sorter<int, LinkedList<int>::Iterator>::MergeSort(list3.begin(), list3.end(), com);
     end = std::chrono::steady_clock::now();
     elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
     std::cout << "MergeSort List: " << elapsed_ms.count() << " ms\n";
