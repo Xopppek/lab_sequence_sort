@@ -77,15 +77,62 @@ public:
         mid += size / 2;
         MergeSort(begin, mid, comparator);
         MergeSort(mid, end, comparator);
-        arrayMerge(begin, mid, end, comparator);
+        array_merge(begin, mid, end, comparator);
+    }
+
+    static void MergeSort(typename LinkedList<T>::Iterator begin,
+                          typename LinkedList<T>::Iterator end,
+                          bool comparator(const T&, const T&)){
+        int size = distance(begin, end);
+        if (size < 2) return;
+        auto mid = begin;
+        mid += size / 2;
+        MergeSort(begin, mid, comparator);
+        MergeSort(mid, end, comparator);
+        list_merge(begin, mid, end, comparator);
     }
 
 private:
-    static void arrayMerge(typename DynamicArray<T>::Iterator begin,
+    static void list_merge(typename LinkedList<T>::Iterator begin,
+                           typename LinkedList<T>::Iterator mid,
+                           typename LinkedList<T>::Iterator end,
+                            bool comparator(const T&, const T&)){
+        DynamicArray<T> buffer;
+        auto left = begin;
+        auto right = mid;
+        while (left != mid and right != end) {
+            if (comparator(*left, *right)) {
+                buffer.Append(*right);
+                right++;
+            }
+            else {
+                buffer.Append(*left);
+                left++;
+            }
+        }
+        while (left != mid){
+            buffer.Append(*left);
+            left++;
+        }
+        while (right != end){
+            buffer.Append(*right);
+            right++;
+        }
+
+        auto take = buffer.begin();
+        auto put = begin;
+        while (take != buffer.end()){
+            *put = std::move(*take);
+            take++;
+            put++;
+        }
+    }
+
+    static void array_merge(typename DynamicArray<T>::Iterator begin,
                            typename DynamicArray<T>::Iterator mid,
                            typename DynamicArray<T>::Iterator end,
                            bool comparator(const T&, const T&)){
-        DynamicArray<T> buffer;
+        LinkedList<T> buffer;
         auto left = begin;
         auto right = mid;
         while (left != mid and right != end) {

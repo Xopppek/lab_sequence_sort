@@ -27,7 +27,7 @@ int main() {
     int hu[n];
     for (int i = 0; i < n; i++){
         hu[i] = std::rand();
-       // std::cout << hu[i] << " ";
+        //std::cout << hu[i] << " ";
     }
 
     ArraySequence<int> arraySequence1(hu, n);
@@ -60,6 +60,7 @@ int main() {
 
     LinkedListSequence<int> list1(hu, n);
     LinkedListSequence<int> list2(hu, n);
+    LinkedListSequence<int> list3(hu, n);
 
 
     begin = std::chrono::steady_clock::now();
@@ -77,6 +78,14 @@ int main() {
     std::cout << "QuickSort List: " << elapsed_ms.count() << " ms\n";
     if (printEnabled)
         Experiments<typename LinkedList<int>::Iterator>::print(list2.begin(), list2.end());
+
+    begin = std::chrono::steady_clock::now();
+    Sorter<int>::MergeSort(list3.begin(), list3.end(), com);
+    end = std::chrono::steady_clock::now();
+    elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
+    std::cout << "MergeSort List: " << elapsed_ms.count() << " ms\n";
+    if (printEnabled)
+        Experiments<typename LinkedList<int>::Iterator>::print(list3.begin(), list3.end());
 
     return 0;
 }
